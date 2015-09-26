@@ -1,4 +1,4 @@
-sinchClient = new SinchClient({
+var sinchClient = new SinchClient({
     //TODO: Insert our actual App Key below.
 	applicationKey: 'INSERT_KEY_HERE',
 	capabilities: {messaging: true, calling: true},
@@ -10,3 +10,5 @@ sinchClient = new SinchClient({
 });
 
 var sessionName = 'CodeButts-' + sinchClient.applicationKey;
+
+sinchClient.start({username: '<user id>', password: '<password>'})
