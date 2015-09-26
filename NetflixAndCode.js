@@ -2,6 +2,7 @@ var sinchClient = new SinchClient({
     //TODO: Insert our actual App Key below.
 	applicationKey: 'INSERT_KEY_HERE',
 	capabilities: {messaging: true, calling: true},
+	supportActiveConnection: true,
 	startActiveConnection: true,
 	// The next three lines are for more verbose debugging
 
@@ -26,3 +27,8 @@ var callListeners = {
 var callClient = sinchClient.getCallClient();
 var call = callClient.callUser('<remote user id>');
 call.addEventListener(callListeners);
+
+CallClient callClient = sinchClient.getCallClient();
+callClient.addEventListener({
+    onIncomingCall: function(incomingCall) {...}
+});
