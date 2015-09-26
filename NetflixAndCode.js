@@ -12,3 +12,12 @@ var sinchClient = new SinchClient({
 var sessionName = 'CodeButts-' + sinchClient.applicationKey;
 
 sinchClient.start({username: '<user id>', password: '<password>'})
+
+var callListeners = {
+    onCallEstablished: function(call) {
+        $('audio').attr('src', call.incomingStreamURL);
+    },
+}
+var callClient = sinchClient.getCallClient();
+var call = callClient.callUser('<remote user id>');
+call.addEventListener(callListeners);
