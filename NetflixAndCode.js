@@ -17,6 +17,9 @@ var sessionName = 'CodeButts-' + sinchClient.applicationKey;
 
 //Voice Calling code below
 
+//Upon further review, I have no faith that any of this works.
+//TODO: Fix the problems regarding the above statement.
+
 sinchClient.start({username: '<user id>', password: '<password>'})
 
 var callListeners = {
