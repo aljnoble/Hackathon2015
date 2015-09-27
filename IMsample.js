@@ -63,38 +63,31 @@ else {
 
 /*** Create user and start sinch for that user and save session in localStorage ***/
 
+function newIMUser(username) {
+	var signUpObj = {};
+	signUpObj.username = username;
+	signUpObj.password = "AlsoSteve";
 
-	//event.preventDefault();
-	$('button#loginUser').attr('disabled', true);
-	$('button#createUser').attr('disabled', true);
-	//clearError();
+	//Use Sinch SDK to create a new user
+	sinchClient.newUser(signUpObj, function(ticket) {
+		//On success, start the client
+		sinchClient.start(ticket, function() {
+			global_username = signUpObj.username;
+			//On success, show the UI
+			showUI();
 
-	var signInObj = {};
-	signInObj.username = "Steve"
-	signInObj.password = "AlsoSteve"
-
-	sinchClient.start(signInObj, function() {
-		global_username = signInObj.username;
-		//On success, show the UI
-		showUI();
-
-		//Store session & manage in some way (optional)
-		localStorage[sessionName] = JSON.stringify(sinchClient.getSession());
+			//Store session & manage in some way (optional)
+			localStorage[sessionName] = JSON.stringify(sinchClient.getSession());
+		}).fail(handleError);
 	}).fail(handleError);
-
-
+}
 
 /*** Login user and save session in localStorage ***/
 
-$('button#loginUser').on('click', function(event) {
-	event.preventDefault();
-	$('button#loginUser').attr('disabled', true);
-	$('button#createUser').attr('disabled', true);
-	clearError();
-
+function loginIM(username) {
 	var signInObj = {};
-	signInObj.username = "Steve"
-	signInObj.password = "AlsoSteve"
+	signInObj.username = username;
+	signInObj.password = "AlsoSteve";
 
 	//Use Sinch SDK to authenticate a user
 	sinchClient.start(signInObj, function() {
@@ -105,7 +98,7 @@ $('button#loginUser').on('click', function(event) {
 		//Store session & manage in some way (optional)
 		localStorage[sessionName] = JSON.stringify(sinchClient.getSession());
 	}).fail(handleError);
-});
+}
 
 
 /*** Send a new message ***/
@@ -116,7 +109,7 @@ $('form#newMessage').on('submit', function(event) {
 	event.preventDefault();
 	clearError();
 
-	var recipients = "Steve"
+	var recipients = "Steve" + roomNum;
 	var text = $('input#message').val();
 	$('input#message').val('');
 

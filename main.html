@@ -25,7 +25,12 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css\editor.css" rel="stylesheet">
-
+  <script>
+    function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+    var roomNum = getRandomInt(0, 5);
+  </script>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -67,8 +72,11 @@
 				<div id="chatAreaContainer">
 					<div id="bottomFade"></div>
 					<div id="chatArea">
-            <script type="text/javascript" src='IMsample.js'>
-              showUI();
+            <script type="text/javascript" src='IMsample.js'></script>              
+            <script>
+              var username = "Steve" + roomNum;
+              newIMUser(username);
+              loginIM(username);
             </script>
 					</div>
 				</div>
@@ -91,11 +99,8 @@
               </script>
               <div id="firepad"></div>
               <script>
-                function getRandomInt(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-                }
                 var firebaseurl = 'https://fiery-fire-9027.firebaseio.com/' +
-                                  getRandomInt(0, 5);
+                                  roomNum;
                 console.log(firebaseurl);
                 var firepadRef = new Firebase(firebaseurl);
                 var editor = ace.edit('editor');
