@@ -25,7 +25,7 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          <label for="exampleInputPassword1">Check Password</label>
+          <label for="exampleInputPassword1">Retype Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
 
@@ -84,10 +84,10 @@
             }
             </script>
           </div>
-          <div class="skill-c++">
-            <label for="skill-c++">Proficiency in C++</label>
-            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-c++" />
-          <span id="range-c++">0</span>
+          <div class="skill-js">
+            <label for="skill-js">Proficiency in C++</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-js" />
+          <span id="range-js">0</span>
           <script type="text/javascript">
             function showValue(newValue)
             {
@@ -95,8 +95,26 @@
             }
             </script>
           </div>
-          <button type="register" class="btn btn-default center-block">Register</button>
-      </form>
+          <button type="register" id="reg" onclick="regFunction()" class="btn btn-default center-block">Register</button>
+      <script>
+        function regFunction() {
+        $(codeblue.json).ready(regFunction(){
+
+        $.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
+
+        $("#exampleUserName").text(data.user);
+        $("#exampleInputPassword1").text(data.pw);
+        $("#skill-py").text(data.py);
+        $("#skill-dj").text(data.dj);
+        $("#skill-js").text(data.js);
+        $("#skill-ruby").text(data.ruby);
+        $("#skill-c").text(data.c);
+
+        });
+        });
+        }
+        </script>
+          </form>
         <center><p><a href="login.html" class="btn btn-success">Back</a></p></center>
       </div>
     </div>
