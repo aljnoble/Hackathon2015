@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+<script src="sinch.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    
     <!-- Firebase -->
 <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 
@@ -56,9 +60,6 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div id="chat">
-				<form id="newRecipient">
-					<input id="recipients" placeholder="Recipients (separate with space)"><br>
-				</form>
 				<form id="newMessage">
 					<input id="message" placeholder="Message (enter to send)"><br>
 					<!--<button id="sendMsg">Send</button>-->
@@ -67,6 +68,9 @@
 				<div id="chatAreaContainer">
 					<div id="bottomFade"></div>
 					<div id="chatArea">
+            <script type="text/javascript" src='IMsample.js'>
+              showUI();
+            </script>
 					</div>
 				</div>
 			</div>
