@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Firebase -->
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+<!-- ACE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+
+<!-- Firepad -->
+<link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.2.0/firepad.css" />
+<script src="https://cdn.firebase.com/libs/firepad/1.2.0/firepad.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="UTF-8">
@@ -33,7 +42,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Achievements</a></li>
           </ul>
@@ -68,28 +77,18 @@
         <div class="panel panel-default">
         <div class="panel-body">
 
-            <pre id="editor">//Welcome to Code(Blue)!
-                //Enter your code here, or just start programming!
-                //Syntax highlighting and error checking will happen automatically!
-                //Happy coding! Here's some demo code to show you the app in action!
-
-                jQuery(function ($) {
-                // Here's some basic JavaScript stuff!
-                $('#basic-modal .basic').click(function (e) {
-                    $('#basic-modal-content').modal();
-                    return false;
-                    });
-                });
-              </pre>
-
-              <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+            <pre id="editor"></pre>
               <script>
                   var editor = ace.edit("editor");
                   editor.setTheme("ace/theme/monokai");
                   editor.getSession().setMode("ace/mode/javascript");
               </script>
-
-          CODE FUNCTION GO HERE
+              <div id="firepad"></div>
+              <script>
+                var firepadRef = new Firebase('fiery-fire-9027.firebaseIO.com');
+                var editor = ace.edit('editor');
+                var firepad = Firepad.fromACE(firepadRef, editor);
+              </script>
         </div>
         </div>
       </div>
