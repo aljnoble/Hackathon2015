@@ -98,19 +98,19 @@
           <button type="register" id="reg" onclick="regFunction()" class="btn btn-default center-block">Register</button>
       <script>
         function regFunction() {
-        $(codeblue.json).ready(regFunction(){
+            $(codeblue.json).ready(regFunction(){
 
-        $.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
+            $.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
 
-        $("#exampleUserName").text(data.user);
-        $("#exampleInputPassword1").text(data.pw);
-        $("#skill-py").text(data.py);
-        $("#skill-dj").text(data.dj);
-        $("#skill-js").text(data.js);
-        $("#skill-ruby").text(data.ruby);
-        $("#skill-c").text(data.c);
+            $("#exampleUserName").text(data.user);
+            $("#exampleInputPassword1").text(data.pw);
+            $("#skill-py").text(data.py);
+            $("#skill-dj").text(data.dj);
+            $("#skill-js").text(data.js);
+            $("#skill-ruby").text(data.ruby);
+            $("#skill-c").text(data.c);
 
-        });
+            });
         });
         }
         </script>
