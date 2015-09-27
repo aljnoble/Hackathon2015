@@ -16,10 +16,9 @@
       <div class="row">
         <form action="main.html">
           <img style="height:262px;width:647px;" src="code(blue)_logo.png" alt="LOGO" class="center-block">
-          <h3><center>Get help with your project, or just have fun learning with someone!</center></center></h3>
-          <div class="form-group">
-           <label for="exampleInputEmail1">Email address</label>
-           <input type="email" class="form-control" id="email" placeholder="Email">
+          <h3><center>Meet & collaborate with coders who have similar interests and experience.</h3><h3><center> All of them are strangers from the internet.</center></center></h3>
+          <div class="form-group">Username</label>
+           <input type="text" class="form-control" id="username" placeholder="Username">
           </div>
           <div class="form-group">
            <label for="exampleInputPassword1">Password</label>
@@ -27,7 +26,8 @@
           </div>
           <button type="submit" class="btn btn-default center-block">Login</button>
         </form>
-        <center><p><a href="signup.html" class="btn btn-success">Sign Up</a></p></center>
+        <button id='signup' type="submit" class="btn btn-success center-block">Sign Up</button>
+
       </div>
     </div>
 
@@ -36,5 +36,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
+  <script>
+    /*** Create user and start sinch for that user and save session in localStorage ***/
+
+    $('button#signup').on('click', function(event) {
+      event.preventDefault();
+      $('button#loginUser').attr('disabled', true);
+      $('button#createUser').attr('disabled', true);
+      clearError();
+
+      var signUpObj = {};
+      signUpObj.username = $('input#username').val();
+      signUpObj.password = $('input#password').val();
+
+      //Use Sinch SDK to create a new user
+      sinchClient.newUser(signUpObj, function(ticket) {
+        //On success, start the client
+        sinchClient.start(ticket, function() {
+          global_username = signUpObj.username;
+          //On success, show the UI
+          showUI();
+
+          //Store session & manage in some way (optional)
+          localStorage[sessionName] = JSON.stringify(sinchClient.getSession());
+        }).fail(handleError);
+      }).fail(handleError);
+    });
+  </script>
 </body>
 </html>
