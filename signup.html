@@ -14,7 +14,7 @@
   <body>
     <div class="container">
       <div class="row">
-      <form action="login.html">
+      <div action="login.html">
         <img style="height:100px;width:207px;" src="code(blue)_logo.png" alt="LOGO" class="center-block">
         <div class="form-group">
           <label for="exampleInputEmail1">Username</label>
@@ -25,16 +25,96 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          <label for="exampleInputPassword1">Check Password</label>
+          <label for="exampleInputPassword1">Retype Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
 
-        <div class="form-group">
-          <label for="comment">Skills/Languages:</label>
-          <textarea class="form-control" rows="5" id="skills"></textarea>
-        </div>
-          <button type="register" class="btn btn-default center-block">Register</button>
-      </form>
+        <div class="skill-py">
+            <label for="skill-py">Proficiency in Python</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-py" />
+          <span id="range-py">0</span>
+          <script type="text/javascript">
+            function showValue(newValue)
+            {
+	            document.getElementById("skill-py").innerHTML=newValue;
+            }
+            </script>
+          </div>
+          <div class="skill-html">
+            <label for="skill-html">Proficiency in HTML</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-html" />
+          <span id="range-html">0</span>
+          <script type="text/javascript">
+            function showValue(newValue)
+            {
+	            document.getElementById("range-html").innerHTML=newValue;
+            }
+            </script>
+          </div>
+          <div class="skill-dj">
+            <label for="skill-dj">Proficiency in Django</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-dj" />
+          <span id="range-dj">0</span>
+          <script type="text/javascript">
+            function showValue(newValue)
+            {
+	            document.getElementById("range-dj").innerHTML=newValue;
+            }
+            </script>
+          </div>
+          <div class="skill-c">
+            <label for="skill-c">Proficiency in C</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-c" />
+          <span id="range-c">0</span>
+          <script type="text/javascript">
+            function showValue(newValue)
+            {
+	            document.getElementById("range-c").innerHTML=newValue;
+            }
+            </script>
+          </div>
+          <div class="skill-ruby">
+            <label for="skill-ruby">Proficiency in Ruby</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-ruby" />
+          <span id="range-ruby">0</span>
+          <script type="text/javascript">
+            function showValue(newValue)
+            {
+	            document.getElementById("range-ruby").innerHTML=newValue;
+            }
+            </script>
+          </div>
+          <div class="skill-js">
+            <label for="skill-js">Proficiency in C++</label>
+            <input type="range" min="0" max="100" value="0" step="1" onchange="showValue(this.value)" id="skill-js" />
+          <span id="range-js">0</span>
+          <script type="text/javascript">
+            function showValue(newValue)
+            {
+	            document.getElementById("range-c++").innerHTML=newValue;
+            }
+            </script>
+          </div>
+          <button type="register" id="reg" onclick="regFunction()" class="btn btn-default center-block">Register</button>
+      <script>
+        function regFunction() {
+        $(codeblue.json).ready(regFunction(){
+
+        $.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
+
+        $("#exampleUserName").text(data.user);
+        $("#exampleInputPassword1").text(data.pw);
+        $("#skill-py").text(data.py);
+        $("#skill-dj").text(data.dj);
+        $("#skill-js").text(data.js);
+        $("#skill-ruby").text(data.ruby);
+        $("#skill-c").text(data.c);
+
+        });
+        });
+        }
+        </script>
+          </form>
         <center><p><a href="login.html" class="btn btn-success">Back</a></p></center>
       </div>
     </div>
