@@ -85,7 +85,13 @@
               </script>
               <div id="firepad"></div>
               <script>
-                var firepadRef = new Firebase('fiery-fire-9027.firebaseIO.com');
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                var firebaseurl = 'https://fiery-fire-9027.firebaseio.com/' +
+                                  getRandomInt(0, 5);
+                console.log(firebaseurl);
+                var firepadRef = new Firebase(firebaseurl);
                 var editor = ace.edit('editor');
                 var firepad = Firepad.fromACE(firepadRef, editor);
               </script>
