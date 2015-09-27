@@ -71,8 +71,19 @@
             <pre id="editor">Welcome to Code(Blue)!
                 Enter your code here, or just start programming!
                 Syntax highlighting and error checking will happen automatically!
-                Happy coding!
-              }</pre>
+                Happy coding! Here's some demo code to show you the app in action!
+
+                jQuery(function ($) {
+                // Load dialog on page load
+                //$('#basic-modal-content').modal();
+
+                // Load dialog on click
+                $('#basic-modal .basic').click(function (e) {
+                    $('#basic-modal-content').modal();
+                    return false;
+                    });
+                });
+              </pre>
 
               <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
               <script>
